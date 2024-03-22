@@ -1,12 +1,12 @@
 package main
 
 import (
-	"final-project-mygram/lib"
+	"final-project-mygram/config"
 	"final-project-mygram/router"
 )
 
 func main() {
-	lib.StartDB()
+	config.StartDB()
 	r := router.StartApp()
 	r.Run(":8082")
 }

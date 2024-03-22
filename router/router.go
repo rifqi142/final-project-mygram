@@ -1,13 +1,21 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"final-project-mygram/controller"
+	"final-project-mygram/middleware"
+
+	"github.com/gin-gonic/gin"
+)
 
 func StartApp() *gin.Engine {
 	r := gin.Default()
 
-	userRouter := r.Group("/user")
+	userRouter := r.Group("/users")
 	{
-		userRouter.POST("/register",)
+		userRouter.POST("/register", controller.Register)
+		userRouter.POST("/login", controller.Login)
+		userRouter.PUT("/", middleware.Authentication(), controller.UpdateDataUser)
+		userRouter.DELETE("/", middleware.Authentication(), controller.DeleteUser)
 	}
 
 	return r

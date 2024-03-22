@@ -1,4 +1,4 @@
-package lib
+package config
 
 import (
 	"final-project-mygram/model"
@@ -29,7 +29,8 @@ func StartDB() {
 
 	defer fmt.Println("Successfully connected to database!")
 
-	db.Debug().AutoMigrate(model.User{}, model.Photo{}, model.Comment{}, model.SocialMedia{})
+	// db.Debug().AutoMigrate(model.User{}, model.Photo{}, model.Comment{}, model.SocialMedia{})
+	db.Debug().AutoMigrate(model.User{})
 }
 
 func GetDB() *gorm.DB {
