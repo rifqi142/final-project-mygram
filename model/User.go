@@ -14,7 +14,7 @@ type User struct {
 	Age          int           `gorm:"not null" json:"age" form:"age"`
 	CreatedAt    time.Time     `json:"created_at"`
 	UpdatedAt    time.Time     `json:"updated_at"`
-	// Photos       []Photo       `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"-"`
+	Photos       []Photo       `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"-"`
 	// Comments     []Comment     `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"-"`
 	// SocialMedias []SocialMedia `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"-"`
 }
@@ -50,10 +50,10 @@ type UpdateUserResponse struct {
 	UpdatedAt time.Time  `json:"updated_at"`
 }
 
-// type UserPhotoResponse struct {
-// 	Email    string `json:"email"`
-// 	Username string `json:"username"`
-// }
+type UserPhotoResponse struct {
+	Email    string `json:"email"`
+	Username string `json:"username"`
+}
 
 // type UserCommentResponse struct {
 // 	ID       uint   `json:"id"`
