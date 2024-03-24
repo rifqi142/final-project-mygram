@@ -61,7 +61,7 @@ func GetAllPhoto(ctx *gin.Context) {
 	db := config.GetDB()
 	photos := []model.Photo{}
 
-	err := db.Debug().Preload("User").Find(&photos).Error
+	err := db.Debug().Preload("User").Order("id asc").Find(&photos).Error
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, util.CreateResponse(false, nil, err.Error(), "Failed to fetch photos"))
 		return
@@ -74,7 +74,7 @@ func GetAllPhoto(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, util.CreateResponse(true, photoResponse, "", "Photos fetched successfully"))
 }
 
-func GetOnePhoto(ctx *gin.Context) {
+func GetPhotoById(ctx *gin.Context) {
 	db := config.GetDB()
 	photoID := ctx.Param("PhotoId")
 	photo := model.Photo{}
@@ -123,7 +123,7 @@ func UpdatePhoto(ctx *gin.Context) {
 		return
 	}
 
-	// Marshal photoRequest to string
+	// Marshal photoRequest to JSON
 	updateString, _ := json.Marshal(photoRequest)
 	updateData := model.Photo{}
 	json.Unmarshal(updateString, &updateData)
@@ -149,21 +149,32 @@ func UpdatePhoto(ctx *gin.Context) {
 }
 
 func DeletePhoto(ctx *gin.Context) {
-	db := config.GetDB()
-	userData := ctx.MustGet("userInfo").(jwt.MapClaims)
+    db := config.GetDB()
+    userData := ctx.MustGet("userInfo").(jwt.MapClaims)
 
-	photoId, _ := strconv.Atoi(ctx.Param("PhotoId"))
-	userID := uint(userData["id"].(float64))
+    photoID, err := strconv.Atoi(ctx.Param("PhotoId"))
+    if err != nil {
+        ctx.JSON(http.StatusBadRequest, util.CreateResponse(false, nil, err.Error(), "Invalid photo ID"))
+        return
+    }
 
-	photo := model.Photo{}
-	photo.ID = uint(photoId)
-	photo.UserID = userID
+    userID := uint(userData["id"].(float64))
 
-	err := db.Delete(&photo).Error
-	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, util.CreateResponse(false, nil, err.Error(), "Failed to delete photo"))
-		return
-	}
+    photo := model.Photo{}
+    if err := db.First(&photo, photoID).Error; err != nil {
+        ctx.JSON(http.StatusNotFound, util.CreateResponse(false, nil, err.Error(), "Photo not found"))
+        return
+    }
 
-	ctx.JSON(http.StatusOK, util.CreateResponse(true, nil, "", "Photo deleted successfully"))
+    if photo.UserID != userID {
+        ctx.JSON(http.StatusForbidden, util.CreateResponse(false, nil, "Forbidden", "You are not authorized to perform this action"))
+        return
+    }
+
+    if err := db.Delete(&photo).Error; err != nil {
+        ctx.JSON(http.StatusInternalServerError, util.CreateResponse(false, nil, err.Error(), "Failed to delete photo"))
+        return
+    }
+
+    ctx.JSON(http.StatusOK, util.CreateResponse(true, nil, "", "Your photo has been successfully deleted "))
 }

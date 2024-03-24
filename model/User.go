@@ -55,17 +55,17 @@ type UserPhotoResponse struct {
 	Username string `json:"username"`
 }
 
-// type UserCommentResponse struct {
-// 	ID       uint   `json:"id"`
-// 	Email    string `json:"email"`
-// 	Username string `json:"username"`
-// }
+type UserCommentResponse struct {
+	ID       uint   `json:"id"`
+	Email    string `json:"email"`
+	Username string `json:"username"`
+}
 
-// type UserSocialMediaResponse struct {
-// 	ID              uint   `json:"id"`
-// 	Username        string `json:"username"`
-// 	ProfileImageUrl string `json:"profile_image_url"`
-// }
+type UserSocialMediaResponse struct {
+	ID              uint   `json:"id"`
+	Username        string `json:"username"`
+	ProfileImageUrl string `json:"profile_image_url"`
+}
 
 func (u *User) BeforeCreate(tx *gorm.DB) error {
 	u.CreatedAt = time.Now()

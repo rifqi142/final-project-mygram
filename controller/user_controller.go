@@ -167,11 +167,10 @@ func DeleteUser(ctx *gin.Context) {
         return
     }
 
-    // Perform soft delete
     if err := db.Delete(&user).Error; err != nil {
         ctx.JSON(http.StatusInternalServerError, util.CreateResponse(false, nil, err.Error(), "Failed to delete user"))
         return
     }
 
-    ctx.JSON(http.StatusOK, util.CreateResponse(true, nil, "", "User deleted successfully"))
+    ctx.JSON(http.StatusOK, util.CreateResponse(true, nil, "", "Your account has been successfully deleted"))
 }
