@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "30c8c93a-95af-4cac-bcf4-827b983acc07",
+		"name": "mygram_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17647214"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"age\": 22,\r\n    \"email\": \"rifqi@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"username\": \"rifqi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"rifqi@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpczIyMUBnbWFpbC5jb20iLCJleHAiOjE3MTExMzAxNTgsImlkIjo1fQ.4sL1uffDmWBrdcFMlXne0pdJrXGeF6NsiA7naDFdhps"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"rifqisgokil@gmail.com\",\r\n    \"username\": \"rifqissamdoe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpczIyMUBnbWFpbC5jb20iLCJleHAiOjE3MTExMzAxNTgsImlkIjo1fQ.4sL1uffDmWBrdcFMlXne0pdJrXGeF6NsiA7naDFdhps"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Acc-2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"fadlan@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/users/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "Create Photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZGxhbkBnbWFpbC5jb20iLCJleHAiOjE3MTEzMDg0MjIsImlkIjoxfQ.5ngOqkYTc1-_YsRGhGbdo_Hi90tGJLW8gc1pYSu_mgc"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"drinking\",\r\n    \"caption\": \"miinuman enak\",\r\n    \"photo_url\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cnet.com%2Fhealth%2Fnutrition%2Fmoderate-these-11-foods-to-balance-your-diet-and-achieve-your-goals%2F&psig=AOvVaw3JYBBM6-H759i-kiKvjar8&ust=1711358679558000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCMk4PKjIUDFQAAAAAdAAAAABAE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/photos/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Photos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZGxhbkBnbWFpbC5jb20iLCJleHAiOjE3MTEzMDg0MjIsImlkIjoxfQ.5ngOqkYTc1-_YsRGhGbdo_Hi90tGJLW8gc1pYSu_mgc"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/photos/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Photo By id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwMDYwOCwiaWQiOjF9.0x6ajCZ18pubn2Apoobi8FiGLy2U0RhnWgAbA2yPjss"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/photos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Photo By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZGxhbkBnbWFpbC5jb20iLCJleHAiOjE3MTEzMDgyMDMsImlkIjoxfQ.O7TyZN4kDdszx1C2RA3WSKVfW503YjgRdjdrWBT54A8"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Top 10 \",\r\n    \"caption\": \"daging terenak\",\r\n    \"photo_url\": \"https://www.google.com/meats\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/photos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Photo By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwNDExOSwiaWQiOjF9.BKRYQNJVGPZ-MtisY0wICJTDXAT1mpmEsBNinDFA-pc"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/photos/26"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwMTEwNCwiaWQiOjF9.ZluwipolIXe-sp3SYeCu3a5WW34aNATDgMLAQO40-lY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"Enak banget tuh kak makanannya\",\r\n    \"photo_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/comments/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwNzUwOCwiaWQiOjF9.dVlxvOCqppU6uPRZ3sWNQvHZDtSx-Qr38MjxOtCj590"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/comments/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwMTI4NywiaWQiOjF9.SHLOnVMBeSyri9ECfKUvKEabHtCWtif5OVo__7i52gY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/comments/7"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwMzE1OCwiaWQiOjF9.utIDY4N0BtNtZQhoa6Sz8W8ZVIHO-hPKEUIWHDKdd-8"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"semangat bang\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/comments/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwMzk0NSwiaWQiOjF9.WP75nFhBPnMIkkJoECfkLWewjAGz4V4qUbg0wTEDgdc"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/comments/9"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Socialmedia",
+			"item": [
+				{
+					"name": "Create Socialmedia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwNzUwOCwiaWQiOjF9.dVlxvOCqppU6uPRZ3sWNQvHZDtSx-Qr38MjxOtCj590"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rifqi\",\r\n    \"social_media_url\": \"https://www.instagram.com/rifqi/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/socialmedias/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Socialmedia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZGxhbkBnbWFpbC5jb20iLCJleHAiOjE3MTEzMDc5MTIsImlkIjoyfQ.cW1dcAJ7XXvu7ijqkHdB8HS_u7iNIVwO8NjRpYj0GbY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/socialmedias/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Socialmedia By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwNzUwOCwiaWQiOjF9.dVlxvOCqppU6uPRZ3sWNQvHZDtSx-Qr38MjxOtCj590"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/socialmedias/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Socialmedia By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZGxhbkBnbWFpbC5jb20iLCJleHAiOjE3MTEzMDc4NTMsImlkIjoyfQ.SgX_whQY_msEvDAytO7DubAmfQ0gpW-Qj7Dc5rfdLLg"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fadlan halooeh\",\r\n    \"social_media_url\": \"https://www.instagram.com/fadlanfadlan/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/socialmedias/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Socialmedia By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZnFpQGdtYWlsLmNvbSIsImV4cCI6MTcxMTMwNzcxMCwiaWQiOjF9.Q3WjUiA6ITwzLSSucVzroLNtigsJAON9YDEexIYmrbc"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/socialmedias/"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

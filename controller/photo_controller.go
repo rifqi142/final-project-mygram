@@ -123,6 +123,12 @@ func UpdatePhoto(ctx *gin.Context) {
 		return
 	}
 
+	// Check if user is authorized to update photo
+	if photo.UserID != userID {
+		ctx.JSON(http.StatusForbidden, util.CreateResponse(false, nil, "Forbidden", "You are not authorized to perform this action"))
+		return
+	}
+
 	// Marshal photoRequest to JSON
 	updateString, _ := json.Marshal(photoRequest)
 	updateData := model.Photo{}

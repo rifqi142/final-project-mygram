@@ -132,6 +132,12 @@ func UpdateComment(ctx *gin.Context) {
 		return
 	}
 
+	// Check if user is authorized to update comment
+	if comment.UserID != userID {
+		ctx.JSON(http.StatusForbidden, util.CreateResponse(false, nil, "Forbidden", "You are not authorized to perform this action"))
+		return
+	}
+
 	updateString, _ := json.Marshal(commentRequest)
 	updateData := model.Comment{}
 	json.Unmarshal(updateString, &updateData)
